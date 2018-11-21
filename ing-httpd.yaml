@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.frontend.rule.type: PathPrefixStrip
+    traefik.ingress.kubernetes.io/redirect-entry-point: http
+  creationTimestamp: 2018-11-21T10:27:36Z
+  generation: 6
+  labels:
+    zone: external
+  name: ing-httpd
+  namespace: test-customer
+  resourceVersion: "3497286"
+  selfLink: /apis/extensions/v1beta1/namespaces/test-customer/ingresses/ing-httpd
+  uid: 10c314f2-ed78-11e8-afd0-005056880c0c
+spec:
+  rules:
+  - host: testweb-w1.benestra.sk
+    http:
+      paths:
+      - backend:
+          serviceName: tc-httpd
+          servicePort: 80
+        path: /
+  - host: testweb-w2.benestra.sk
+    http:
+      paths:
+      - backend:
+          serviceName: tc-httpd
+          servicePort: 80
+        path: /
+status:
+  loadBalancer: {}
