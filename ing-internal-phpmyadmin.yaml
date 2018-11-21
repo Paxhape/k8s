@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.frontend.rule.type: PathPrefixStrip
+    traefik.ingress.kubernetes.io/redirect-entry-point: http
+  creationTimestamp: 2018-11-21T11:22:35Z
+  generation: 3
+  labels:
+    zone: internal
+  name: ing-internal-httpd
+  namespace: test-customer
+  resourceVersion: "3497133"
+  selfLink: /apis/extensions/v1beta1/namespaces/test-customer/ingresses/ing-internal-httpd
+  uid: bf045a86-ed7f-11e8-afd0-005056880c0c
+spec:
+  rules:
+  - host: kworker1-test.ms.nx
+    http:
+      paths:
+      - backend:
+          serviceName: phpmyadmin
+          servicePort: 81
+        path: /
+  - host: kworker2-test.ms.nx
+    http:
+      paths:
+      - backend:
+          serviceName: phpmyadmin
+          servicePort: 81
+        path: /
+status:
+  loadBalancer: {}
