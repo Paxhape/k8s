@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-11-20T12:54:49Z
+  labels:
+    k8s-app: traefik-ingress-lb-internal
+  name: svc-internal-traefik
+  namespace: kube-system
+  resourceVersion: "3471346"
+  selfLink: /api/v1/namespaces/kube-system/services/svc-internal-traefik
+  uid: 76ecb3b6-ecc3-11e8-afd0-005056880c0c
+spec:
+  clusterIP: 10.108.69.26
+  externalIPs:
+  - 10.122.25.128
+  - 10.122.25.127
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: web
+    nodePort: 31402
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 31986
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: admin
+    nodePort: 32561
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    k8s-app: traefik-ingress-lb-internal
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
