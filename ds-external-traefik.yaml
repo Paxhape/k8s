@@ -1,0 +1,78 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  creationTimestamp: 2018-11-21T08:54:07Z
+  generation: 1
+  labels:
+    k8s-app: traefik-ingress-lb-external
+  name: ds-external-traefik
+  namespace: kube-system
+  resourceVersion: "3489490"
+  selfLink: /apis/extensions/v1beta1/namespaces/kube-system/daemonsets/ds-external-traefik
+  uid: 01267540-ed6b-11e8-afd0-005056880c0c
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: traefik-ingress-lb-external
+      name: traefik-ingress-lb-external
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s-app: traefik-ingress-lb-external
+        name: traefik-ingress-lb-external
+    spec:
+      containers:
+      - args:
+        - --configfile=/config/traefik.toml
+        - --logLevel=INFO
+        image: traefik
+        imagePullPolicy: Always
+        name: traefik-ingress-lb
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        - containerPort: 8080
+          name: admin
+          protocol: TCP
+        resources: {}
+        securityContext:
+          capabilities:
+            add:
+            - NET_BIND_SERVICE
+            drop:
+            - ALL
+          procMount: Default
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: sa-external-traefik
+      serviceAccountName: sa-external-traefik
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: cm-external-traefik
+        name: config
+  templateGeneration: 1
+  updateStrategy:
+    type: OnDelete
+status:
+  currentNumberScheduled: 2
+  desiredNumberScheduled: 2
+  numberAvailable: 2
+  numberMisscheduled: 0
+  numberReady: 2
+  observedGeneration: 1
+  updatedNumberScheduled: 2
