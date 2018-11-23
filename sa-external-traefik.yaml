@@ -1,11 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  creationTimestamp: 2018-11-20T09:43:16Z
   name: sa-external-traefik
   namespace: kube-system
-  resourceVersion: "3357772"
-  selfLink: /api/v1/namespaces/kube-system/serviceaccounts/sa-external-traefik
-  uid: b46d0b5f-eca8-11e8-afd0-005056880c0c
 secrets:
 - name: sa-external-traefik-token-fpx68

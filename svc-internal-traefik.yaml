@@ -1,14 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: 2018-11-20T12:54:49Z
   labels:
     k8s-app: traefik-ingress-lb-internal
   name: svc-internal-traefik
   namespace: kube-system
-  resourceVersion: "3471346"
-  selfLink: /api/v1/namespaces/kube-system/services/svc-internal-traefik
-  uid: 76ecb3b6-ecc3-11e8-afd0-005056880c0c
 spec:
   clusterIP: 10.108.69.26
   externalIPs:

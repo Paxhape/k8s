@@ -1,11 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: 2018-11-20T09:37:40Z
   name: cr-internal-traefik
-  resourceVersion: "3357294"
-  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterroles/cr-internal-traefik
-  uid: ecb6b68b-eca7-11e8-afd0-005056880c0c
 rules:
 - apiGroups:
   - ""

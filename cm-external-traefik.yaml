@@ -5,15 +5,11 @@ data:
     = true\n    [entryPoints.https]\n    address = \":443\"\n    compress = true\n
     \   [entryPoints.https.tls]\n    \n[api]\n  [api.statistics]\n    recentErrors
     = 10\n    \n[kubernetes]\n  labelselector = \"zone=external\"\n  \n[ping]\n  entryPoint
-    = \"http\"\n\n[accessLog]\n\n[acme]\n  email = \"ms@benestra.sk\"\n  storage =
+    = \"http\"\n\n[accessLog]\n\n[acme]\n  email = \"acme@acme.com\"\n  storage =
     \"acme.json\"\n  acmeLogging = true\n  entryPoint = \"https\"\n  OnHostRule =
     true\n  #caServer = \"https://acme-staging-v02.api.letsencrypt.org/directory\"\n
     \ [acme.httpChallenge]\n    entryPoint=\"http\"\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: 2018-11-20T09:36:26Z
   name: cm-external-traefik
   namespace: kube-system
-  resourceVersion: "3489408"
-  selfLink: /api/v1/namespaces/kube-system/configmaps/cm-external-traefik
-  uid: c089c8d5-eca7-11e8-afd0-005056880c0c

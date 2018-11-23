@@ -1,15 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  creationTimestamp: 2018-11-21T08:54:07Z
-  generation: 1
   labels:
     k8s-app: traefik-ingress-lb-external
   name: ds-external-traefik
   namespace: kube-system
-  resourceVersion: "3489490"
-  selfLink: /apis/extensions/v1beta1/namespaces/kube-system/daemonsets/ds-external-traefik
-  uid: 01267540-ed6b-11e8-afd0-005056880c0c
 spec:
   revisionHistoryLimit: 10
   selector:
@@ -68,11 +63,3 @@ spec:
   templateGeneration: 1
   updateStrategy:
     type: OnDelete
-status:
-  currentNumberScheduled: 2
-  desiredNumberScheduled: 2
-  numberAvailable: 2
-  numberMisscheduled: 0
-  numberReady: 2
-  observedGeneration: 1
-  updatedNumberScheduled: 2

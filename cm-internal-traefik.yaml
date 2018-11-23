@@ -8,9 +8,5 @@ data:
     \"zone=internal\"\n\n[ping]\nentryPoint = \"http\"\n\n[accessLog]\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: 2018-11-20T09:23:18Z
   name: cm-internal-traefik
   namespace: kube-system
-  resourceVersion: "3356086"
-  selfLink: /api/v1/namespaces/kube-system/configmaps/cm-internal-traefik
-  uid: eac46b0d-eca5-11e8-afd0-005056880c0c
