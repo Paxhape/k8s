@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: rb-external-nginx
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx-external
+    app.kubernetes.io/part-of: ingress-nginx-external
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: r-external-nginx
+subjects:
+  - kind: ServiceAccount
+    name: sa-external-nginx-ingress-serviceaccount
+    namespace: ingress-nginx
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: crb-external-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx-external
+    app.kubernetes.io/part-of: ingress-nginx-external
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cr-external-nginx
+subjects:
+  - kind: ServiceAccount
+    name: sa-external-nginx-ingress-serviceaccount
+    namespace: ingress-nginx

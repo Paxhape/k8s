@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  "9000": default/ubuntu:4022
+kind: ConfigMap
+metadata:
+  name: internal-tcp-services
+  namespace: ingress-nginx
